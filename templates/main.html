@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фудкорт</title>
+</head>
+<body>
+  <table border="1px">
+    <caption>
+      Рестораны фудкорта
+    </caption>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>healthy</th>
+      <th>max_people</th>
+    </tr>
+    {% for restaurant in list_of_restaurants %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ restaurant.name }}</td>
+      <td>{{ restaurant.healthy }}</td>
+      <td>{{ restaurant.max_people }}</td>
+    </tr>
+    <form action={{ restaurant.name }} method="get">
+    {% csrf_token %}
+    <input type="submit" class="btn" value={{restaurant.name}} name="mybtn">
+    </form>
+    {% endfor %}
+
+  </table>
+</body>
+</html>
